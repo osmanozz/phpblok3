@@ -14,7 +14,7 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">FlowerPower</a>
+      <a class="navbar-brand" href="index.php">FlowerPower</a>
       <img src="boeket2.jpg" style="width:100px;height:80px">
     </div>
     <ul class="nav navbar-nav navbar-center">

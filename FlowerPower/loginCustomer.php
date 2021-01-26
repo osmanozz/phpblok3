@@ -14,11 +14,11 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">FlowerPower</a>
+      <a class="navbar-brand" href="index.php">FlowerPower</a>
       <img src="boeket2.jpg" style="width:100px;height:80px">
     </div>
     <ul class="nav navbar-nav navbar-center">
-      <li><a href="#">Home</a></li>
+      <li><a href="index.php">Home</a></li>
       <li><a href="contact.php">Contact</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -28,11 +28,14 @@
     </ul>
   </div>
 </nav>
-  
+
+<div class="position-absolute top-40 end-50">
 <form>
+<div class="badge bg-primary text-wrap" style="width: 20rem;">
+Inloggen als klant
+</div>
   <div class="form-group">
-  <div class="col-2">
-  <h4>Inloggen als klant</h4>
+  <div class="col-30">
   <br>
   <br>
     <label for="exampleInputEmail1">Email address</label>
@@ -40,13 +43,14 @@
   </div>
   </div>
   <div class="form-group">
-  <div class="col-2">
+  <div class="col-30">
     <label for="exampleInputPassword1">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword1" required placeholder="Password">
   </div>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+</div>
 
 </body>
 </html>

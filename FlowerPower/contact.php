@@ -13,8 +13,8 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">FlowerPower</a>
-      <img src="boeket2.jpg" style="width:80px;height:60px">
+      <a class="navbar-brand" href="index.php">FlowerPower</a>
+      <img src="boeket2.jpg" style="width:100px;height:80px">
     </div>
     <ul class="nav navbar-nav navbar-center">
       <li><a href="index.php">Home</a></li>
@@ -22,20 +22,18 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> Registreren</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Inloggen Als Klant</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Inloggen Medewerker</a></li>
+      <li><a href="loginCustomer.php"><span class="glyphicon glyphicon-log-in"></span> Inloggen Als Klant</a></li>
+      <li><a href="loginEmployee.php"><span class="glyphicon glyphicon-log-in"></span> Inloggen Medewerker</a></li>
     </ul>
   </div>
 </nav>
 
-    <div class="text">
-    
-    <br>
-    <br>
-    <h2>Adress = </h3>
-    <h3>Telefoonnummer = </h3>
-    <h3>E-mail = </h3>
-    
+
+<div class="position-absolute top-50 end-50">
+
+    <h3>Adress : </h3>
+    <h3>Telefoonnummer : </h3>
+    <h3>E-mail : </h3>
     </div>
     
 
