@@ -32,7 +32,7 @@
 <div class="header">
 	<h2>Inloggen Klant</h2>
 </div>
-<form method="post" action="registreren.php">
+<form method="post" action="klant.php">
 	<div class="input-group">
 		<label>Username</label>
 		<input type="text" name="username" value="">
@@ -41,7 +41,7 @@
 		<input type="password" name="password_1">
 	</div>
 	<div class="input-group">
-		<button type="submit" class="btn" name="register_btn">Inloggen</button>
+		<button type="submit" class="btn" name="loginbtn">Inloggen</button>
 	</div>
 	<p>
 		Niet aangemeld? <a href="registreren.php">Registreren</a>
@@ -50,3 +50,28 @@
 
 </body>
 </html>
+
+<?php
+
+include "database.php";
+if(isset($_POST["loginbtn"]))  
+     {  
+               $query = "SELECT * FROM klant WHERE gebruikersnaam = :username AND wachtwoord = :password_1";  
+               $statement = $verbinding->prepare($query);  
+               $statement->execute(  
+                    array(  
+                         'username'     =>     $_POST["username"],  
+                         'password_1'     =>     $_POST["password_1"]  
+                    )  
+               );  
+               $count = $statement->rowCount();  
+               if($count > 0)  
+               { 
+                     header("location:klant.php");  
+               }  
+               else  
+               {  
+                    echo "wrong data";
+               }  
+          }  
+        
