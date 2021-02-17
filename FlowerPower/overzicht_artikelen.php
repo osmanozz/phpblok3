@@ -33,38 +33,45 @@
   </div>
 </nav>
 
+<?php  
+        include 'database.php';
+        $db = new database();
+        $artikelen = $db->select("SELECT * FROM artikel", []);
 
+        $columns = array_keys($artikelen[0]);
+        $row_data = array_values($artikelen);
+        
+        ?>
+        <table>
+            <tr>
+                <?php
+                    foreach($columns as $column){
+                        echo "<td><strong>$column</strong></td>";
+                    }
+                ?>
 
-<table class="table">OVERZICHT ARTIKELEN
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+                <th colspan="2">Action</th>
+                </tr>
+                <?php  
+                foreach($row_data as $rows){
+                    $artikel_code = $rows['artikelcode'];
+                    echo "<tr>";
+                    foreach($rows as $data){
+                        echo "<td>$data</td>";
+                    }
+                    echo "<td>";
+                    echo "<a href=edit_artikel.php?artikelcode=$artikel_code>Edit</a>";
+                    echo "</td>";
+                    echo "<tr>";
+              
+                }
+                ?>
+
+            
+
+          
+        </table>
+
 
 </body>
 </html>

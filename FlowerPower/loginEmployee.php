@@ -70,7 +70,7 @@ include "database.php";
                {  
                     echo "wrong data";
                }  
-          }  
+    }  
         
  
 
