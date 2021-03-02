@@ -23,18 +23,38 @@ class database{
         }
     }
 
-    public function select($statement, $named_placeholder){
+    public function select($sql, $named_placeholder){
 
-        $sql = "SELECT username, password, email FROM users WHERE username = :uname ;"; // :uname is een named placeholder
+        // $sql = "SELECT username, password, email FROM users WHERE username = :uname ;"; // :uname is een named placeholder
 
         // prepared statement (send statement to server  + checks syntax)
-        $statement = $this->dbh->prepare($statement);
+        $statement = $this->dbh->prepare($sql);
 
         $statement->execute($named_placeholder);
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $result;
 
+    }
+
+
+
+
+    public function update($sql, $placeholder, $file) {
+
+        $statement = $this->dbh->prepare($sql);
+        $statement->execute($placeholder);
+        // print_r($statement);
+        header("location: " . $file);
+        exit;
+    }
+
+    public function delete($sql, $placeholder, $file) {
+
+        $statement = $this->dbh->prepare($sql);
+        $statement->execute($placeholder);
+        header("location: " . $file);
+        exit;
     }
 }
 ?>

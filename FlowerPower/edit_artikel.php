@@ -9,24 +9,34 @@
 
 <body>
 <?php
-     
-    if(isset($_POST['submit'])) {
+
+    include_once "database.php";
+    $db = new database();
+    if(isset($_GET['id'])){
+        $artikel = $db->select('SELECT * FROM artikel WHERE artikelcode=:id', ['id'=>$_GET['id']]);
+        $artikelnaam = $artikel[0]['artikel'];
+        $artikelprijs = $artikel[0]['prijs'];
+
+    }
+    
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $id = $_POST['artikelid'];
         $artikel = $_POST['artikel'];
         $prijs = $_POST['prijs'];
 
-        $query = "UPDATE artikel SET artikel=:artikel, prijs=:prijs where 'artikelid'=:artikelid";
+        // echo "id is $id, artikel is $artikel, prijs is $prijs";
 
-        $stmt = $connect->prepare($query);
+        $sql = "UPDATE artikel SET artikel=:artikel, prijs=:prijs WHERE artikelcode=:artikelid";
 
-        
-            $stmt->execute(
-                array(
-                $artikel => $_POST['artikel'],
-                $prijs => $_POST['prijs']
-            ));
-            echo $stmt->rowCount() . 'record updated';
+        $placeholders = [
+            'artikel'=> $artikel,
+            'prijs'=> $prijs, 
+            'artikelid'=>$id
+        ];
+
+        $db->update($sql, $placeholders, 'overzicht_artikelen.php');
+
         }
      
 
@@ -34,10 +44,10 @@
 
 <form action="edit_artikel.php" method="post">
                 <!-- doorgaan met setten van value met ternary operator -->
-        <input type="hidden" name="artikelid" value="<?php echo $_GET['artikelid'] ?>>">
-        <input type="text" name="artikel" placeholder="artikel">
-        <input type="text" name="prijs" placeholder="prijs">
-        <input type="submit" value="Wijzig">
+        <input type="hidden" name="artikelid" value="<?php echo $_GET['id'] ?>">
+        <input type="text" name="artikel" placeholder="<?php echo isset($artikelnaam) ? $artikelnaam : 'artikel' ?>">
+        <input type="text" name="prijs" placeholder="<?php echo isset($artikelprijs) ? $artikelprijs : 'prijs' ?>">
+        <input type="submit" name="submit" value="Wijzig">
     </form>
 
 

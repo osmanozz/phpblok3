@@ -60,7 +60,8 @@
                         echo "<td>$data</td>";
                     }
                     echo "<td>";
-                    echo "<a href=edit_artikel.php?artikelcode=$artikel_code>Edit</a>";
+                    echo "<a href=edit_artikel.php?id=$artikel_code>Edit</a>";
+                    echo "<a href=delete_artikelen.php?id=$artikel_code>Delete</a>";
                     echo "</td>";
                     echo "<tr>";
               
