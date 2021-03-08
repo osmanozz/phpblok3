@@ -39,7 +39,7 @@
 
         }
      
-
+   
 ?>
 
 <form action="edit_artikel.php" method="post">
