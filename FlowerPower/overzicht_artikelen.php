@@ -36,12 +36,14 @@
 <?php  
         include 'database.php';
         $db = new database();
+
         $artikelen = $db->select("SELECT * FROM artikel", []);
 
         $columns = array_keys($artikelen[0]);
         $row_data = array_values($artikelen);
-        
-        ?>
+    ?>
+        <a href="artikel_toevoegen.php">Artikel Toevoegen</a>
+
         <table>
             <tr>
                 <?php
@@ -52,7 +54,9 @@
 
                 <th colspan="2">Action</th>
                 </tr>
-                <?php  
+                  
+
+            <?php
                 foreach($row_data as $rows){
                     $artikel_code = $rows['artikelcode'];
                     echo "<tr>";
@@ -66,13 +70,9 @@
                     echo "<tr>";
               
                 }
-                ?>
-
-            
-
-          
+       ?>
         </table>
-
+       
 
 </body>
 </html>

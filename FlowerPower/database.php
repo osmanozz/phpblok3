@@ -11,7 +11,7 @@ class database{
         $this->host = 'localhost';
         $this->username = 'root';
         $this->password = 'Osmanosman1.';
-        $this->database = 'flowerpowerdb';
+        $this->database = 'flowerpower1';
 
         try {
 
@@ -50,6 +50,14 @@ class database{
     }
 
     public function delete($sql, $placeholder, $file) {
+
+        $statement = $this->dbh->prepare($sql);
+        $statement->execute($placeholder);
+        header("location: " . $file);
+        exit;
+    }
+
+    public function add($sql, $placeholder, $file) {
 
         $statement = $this->dbh->prepare($sql);
         $statement->execute($placeholder);
