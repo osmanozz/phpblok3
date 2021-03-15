@@ -54,7 +54,7 @@ include "database.php";
      if(isset($_POST["login_btn"]))  
      {  
                $query = "SELECT * FROM medewerker WHERE gebruikersnaam = :username AND wachtwoord = :password_1";  
-               $statement = $verbinding->prepare($query);  
+               $statement = $verbinding->prepare($query); 
                $statement->execute(  
                     array(  
                          'username'     =>     $_POST["username"],  

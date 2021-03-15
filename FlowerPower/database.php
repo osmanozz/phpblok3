@@ -37,9 +37,6 @@ class database{
 
     }
 
-
-
-
     public function update($sql, $placeholder, $file) {
 
         $statement = $this->dbh->prepare($sql);
@@ -63,6 +60,30 @@ class database{
         $statement->execute($placeholder);
         header("location: " . $file);
         exit;
+    }
+
+    public function insert($sql, $named_placeholder_array){
+        // om data integrity te behouden, werken we met transacties.
+        // je begint een transactie, en commit deze. als de insert mislukt (transactie mislukt), dan wordt half bijgeschreven data gerevert.
+        // op deze manier heb je geen halve data in je database. Meer over transacties en PDO: https://phpdelusions.net/pdo#transactions
+
+        try{
+            // start je transactie
+            $this->dbh->beginTransaction();
+
+            $statement = $this->dbh->prepare($sql);
+            $statement->execute($named_placeholder_array);
+
+            // schrijf data definitief naar db
+            $this->dbh->commit();
+        }catch(Exception $e){
+            // dit stukje wordt alleen bereikt als in de try-clause een error heeft plaatsgevonden.
+            // eventuele "data changes" worden gerollbacked, denk aan ctrl+z in een word document.
+            $this->pdo->rollback();
+            throw $e;
+        }
+
+
     }
 }
 ?>

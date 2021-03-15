@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- CSS only -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styleindex.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 </head>
 <body>
@@ -29,7 +30,7 @@
 </nav>
   
 <div class="container">
-<img src="bloemenwinkel.jpg" class="rounded float-left" width="110%" height="650"> 
+<img src="bloemenwinkel.jpg" class="rounded float-left" width="117%" height="650"> 
 </div>
 
 </body>

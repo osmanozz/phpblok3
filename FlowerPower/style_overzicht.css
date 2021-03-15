@@ -5,6 +5,12 @@ body,html {
   font-family:lato;
 }
 
+table {
+  width: 30%;
+  margin-left: 30%;
+  margin-top: 5%;
+}
+
 h2 {
   margin-bottom:0px;
   margin-top:25px;

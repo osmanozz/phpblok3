@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- CSS only -->
-<link rel="stylesheet" href="styleoverzicht.css">
+<link rel="stylesheet" href="style_overzicht.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 </head>
@@ -33,6 +33,37 @@
   </div>
 </nav>
 
+<style>
+            .edit {
+                background-color: #4CAF50; 
+                border: none;
+                color: white;
+                padding: 10px 27px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+            .delete {
+                background-color: #f44336; 
+                border: none;
+                color: white;
+                padding: 10px 27px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+            td {
+             
+    padding:0 10px;
+            }
+</style>
+
 <?php  
         include 'database.php';
         $db = new database();
@@ -42,9 +73,10 @@
         $columns = array_keys($artikelen[0]);
         $row_data = array_values($artikelen);
     ?>
-        <a href="artikel_toevoegen.php">Artikel Toevoegen</a>
+        
 
         <table>
+          
             <tr>
                 <?php
                     foreach($columns as $column){
@@ -52,7 +84,10 @@
                     }
                 ?>
 
-                <th colspan="2">Action</th>
+                <th colspan="2">Action
+                <a class='edit' href="artikel_toevoegen.php">Artikel Toevoegen</a>
+                </th>
+                
                 </tr>
                   
 
@@ -64,13 +99,15 @@
                         echo "<td>$data</td>";
                     }
                     echo "<td>";
-                    echo "<a href=edit_artikel.php?id=$artikel_code>Edit</a>";
-                    echo "<a href=delete_artikelen.php?id=$artikel_code>Delete</a>";
+                    echo "<a class='edit' href=edit_artikel.php?id=$artikel_code>Edit</a>";
+                    echo "<a class='delete' href=delete_artikelen.php?id=$artikel_code>Delete</a>";
+
                     echo "</td>";
                     echo "<tr>";
               
                 }
        ?>
+       
         </table>
        
 
